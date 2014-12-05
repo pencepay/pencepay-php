@@ -1,0 +1,28 @@
+{
+    "name": "pencepay/pencepay-php",
+    "type": "library",
+    "description": "Pencepay PHP Library",
+    "keywords": ["payments", "payment processing", "credit cards"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pencepay",
+            "homepage": "http://pencepay.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.1",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-hash": "*",
+        "ext-openssl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Pencepay": "lib"
+        }
+    }
+}
