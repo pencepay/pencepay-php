@@ -10,7 +10,9 @@
  * @property-read string $phone
  * @property-read string $fax
  * @property-read array $settings
- * @property-read array $parentMerchantUid
+ * @property-read string $parentMerchantUid
+ * @property-read string $defaultCurrency
+ * @property-read array $supportedCurrencies
  * @property-read Pencepay_Address $businessAddress
  * @property-read string $created
  */

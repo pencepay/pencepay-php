@@ -1,6 +1,6 @@
 # Pencepay PHP Library
 
-This is a server-side library for Pencepay gateway. You can [signup](https://pencepay.com) to Pencepay at and then use this library to integrate.
+This is a server-side library for Pencepay gateway. You can [signup](https://pencepay.com) to Pencepay and then use this library to integrate.
 
 ## Dependencies
 
@@ -46,12 +46,11 @@ or if you are not using Composer, just require the library directly:
 ```php
 Pencepay_Context::setPublicKey("your-public-key");
 Pencepay_Context::setSecretKey("your-secret-key");
-Pencepay_Context::setEnvironment(Pencepay_Context::PRODUCTION);
 
 $transaction = Pencepay_Transaction::create(
     Pencepay_Request_Transaction::build()
         ->orderId('123456')
-        ->amount(10.99)
+        ->amount('10.99')
         ->currencyCode('EUR')
         ->creditCard()
             ->cardholderName('John Hancock')

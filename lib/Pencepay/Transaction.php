@@ -27,6 +27,8 @@
  */
 class Pencepay_Transaction extends Pencepay_Object {
 
+    public static $checkoutUrl = 'https://secure.pencepay.com/service/1.0/checkout';
+
     /**
      * @param Pencepay_Request_Transaction $request
      * @return Pencepay_Transaction
@@ -85,6 +87,51 @@ class Pencepay_Transaction extends Pencepay_Object {
     public static function refund($transactionUid, $amount) {
         $actionRequest = Pencepay_Request_TransactionAction::build()->amount($amount);
         return Pencepay_Util_HttpClient::post("/transaction/$transactionUid/refund", $actionRequest);
+    }
+
+    /**
+     * @param Pencepay_Request_Transaction $request
+     * @return array
+     */
+    public static function generateCheckoutParameters(Pencepay_Request_Transaction $request) {
+        $required = array('amount', 'currencyCode', 'orderId', 'cancelUrl', 'redirectUrl');
+        $requestParams = $request->getParams();
+
+        // Check if required properties are set
+        foreach ($required as $propertyName) {
+            if (!self::arrayValueNotEmpty($propertyName, $requestParams)) {
+                throw new Pencepay_Exception_InvalidRequest(
+                        'Required Checkout request property not set: ' . $propertyName);
+            }
+        }
+
+        $params = array();
+        foreach ($requestParams as $key => $value) {
+            if (self::arrayValueNotEmpty($key, $requestParams)) {
+                $params[$key] = $value;
+            }
+        }
+
+        $params['apiVersion'] = Pencepay_Version::get();
+        $params['publicKey'] = Pencepay_Context::getPublicKey();
+
+        $digestInput = '';
+        $signatureFields = array('publicKey', 'amount', 'currencyCode', 'orderId');
+        foreach ($signatureFields as $field) {
+            $digestInput .= $params[$field];
+        }
+        $digestInput .= Pencepay_Context::getSecretKey();
+
+        $params['signature'] = hash('sha256', $digestInput);
+
+        return $params;
+    }
+
+    private static function arrayValueNotEmpty($propertyName, array $requestParams) {
+        if (!array_key_exists($propertyName, $requestParams) || empty($requestParams[$propertyName])) {
+            return false;
+        }
+        return true;
     }
 
 }

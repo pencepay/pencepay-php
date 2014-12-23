@@ -23,14 +23,36 @@ class Pencepay_Util_HttpClient {
     }
 
     private static function buildUrl($path, array $fields) {
-        return "$path?" . http_build_query($fields);
+        return "$path?" . self::encodeParameters($fields);
     }
 
     private static function _doRequest($httpVerb, $path, $requestParams = array()) {
         return self::_sendRequest($httpVerb, Pencepay_Context::getBaseUrl() . $path, $requestParams);
     }
 
-	private static function _sendRequest($httpMethod, $url, $requestParams = array()) {
+    private static function encodeParameters(array $params, $prefix = null) {
+        $r = array();
+        foreach ($params as $k => $v) {
+            if (is_null($v)) {
+                continue;
+            }
+
+            if ($prefix && $k && !is_int($k)) {
+                $k = $prefix . "[" . $k . "]";
+            } else if ($prefix) {
+                $k = $prefix;
+            }
+
+            if (is_array($v)) {
+                $r[] = self::encodeParameters($v, $k, true);
+            } else {
+                $r[] = "$k=" . urlencode($v);
+            }
+        }
+        return implode("&", $r);
+    }
+
+    private static function _sendRequest($httpMethod, $url, $requestParams = array()) {
 
         $curl = curl_init();
 		curl_setopt($curl, CURLOPT_TIMEOUT, 60);
@@ -47,15 +69,13 @@ class Pencepay_Util_HttpClient {
 		curl_setopt($curl, CURLOPT_USERPWD, self::_getAuthCredentials());
 
 		if (count($requestParams) > 0) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($requestParams));
+            curl_setopt($curl, CURLOPT_POSTFIELDS, self::encodeParameters($requestParams));
         }
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$responseBody = curl_exec($curl);
 		$httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
-
-        // echo $responseBody;
 
         if (self::_isErrorResponse($httpStatus)) {
             switch ($httpStatus) {

@@ -7,13 +7,13 @@ final class Pencepay_Version {
 
 	const MAJOR = 1;
 	const MINOR = 0;
-	const TINY = 0;
+	const PATCH = 1;
 	
 	protected function __construct() {
 	}
-	
+
 	public static function get() {
-		return self::MAJOR . '.' . self::MINOR . '.' . self::TINY;
+		return self::MAJOR . '.' . self::MINOR . '.' . self::PATCH;
 	}
 
 }
