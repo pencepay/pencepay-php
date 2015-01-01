@@ -102,11 +102,11 @@ class Pencepay_Util_HttpClient {
         return Pencepay_Util_Json::fromJson($responseBody);
 	}
 
-    private function _isErrorResponse($httpStatus) {
+    private static function _isErrorResponse($httpStatus) {
         return $httpStatus != 200 && $httpStatus != 201 && $httpStatus != 202;
     }
 
-	private function _getAuthCredentials() {
+	private static function _getAuthCredentials() {
 		return Pencepay_Context::getPublicKey() . ':' . Pencepay_Context::getSecretKey();
 	}
 

@@ -2,7 +2,7 @@
 
 class Pencepay_Context {
 
-//    const SERVER_API_VERSION = 1;
+    const SERVER_API_VERSION = "1";
 
     const DEVELOPMENT = "DEVELOPMENT";
     const PRODUCTION = "PRODUCTION";
