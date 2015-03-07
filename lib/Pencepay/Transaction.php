@@ -5,13 +5,15 @@
  * @property-read string $live
  * @property-read string $amount
  * @property-read string $currencyCode
+ * @property-read string $refundedAmount
  * @property-read string $orderId
  * @property-read string $description
  * @property-read string $transactionType
  * @property-read string $status
  * @property-read string $paymentMethod
  * @property-read string $cvvResult
- * @property-read string $avsResult
+ * @property-read string $avsStreetResult
+ * @property-read string $avsPostalCodeResult
  * @property-read string $approvalCode
  * @property-read string $failureCode
  * @property-read string $failureMessage
@@ -50,7 +52,7 @@ class Pencepay_Transaction extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($search) {
-        return Pencepay_Util_HttpClient::getWithParams("/transaction_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/transactions", $search);
     }
 
     /**

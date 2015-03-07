@@ -8,7 +8,7 @@ class Pencepay_Context {
     const PRODUCTION = "PRODUCTION";
 
     const GATEWAY_DEVELOPMENT = "http://localhost/frontend/api/v1";
-    const GATEWAY_PRODUCTION = "https://secure.pencepay.com/frontend/api/v1";
+    const GATEWAY_PRODUCTION = "https://api.pencepay.com/v1";
 
     private static $publicKey;
     private static $secretKey;

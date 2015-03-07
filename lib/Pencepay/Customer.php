@@ -50,7 +50,7 @@ class Pencepay_Customer extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($search) {
-        return Pencepay_Util_HttpClient::getWithParams("/customer_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/customers", $search);
     }
 
     /**

@@ -57,7 +57,7 @@ class Pencepay_CreditCard extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($customerUid, $search) {
-        return Pencepay_Util_HttpClient::getWithParams("/customer/$customerUid/card_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/customer/$customerUid/cards", $search);
     }
 
     /**

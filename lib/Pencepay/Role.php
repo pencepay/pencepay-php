@@ -37,7 +37,7 @@ class Pencepay_Role extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($search) {
-        return Pencepay_Util_HttpClient::getWithParams("/role_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/roles", $search);
     }
 
     /**

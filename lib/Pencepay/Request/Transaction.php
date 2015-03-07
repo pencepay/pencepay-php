@@ -75,8 +75,8 @@ class Pencepay_Request_Transaction extends Pencepay_Request {
     }
 
     /** @return self */
-    public function creditCardUid($customerUid) {
-        $this->customerUid = $customerUid;
+    public function creditCardUid($creditCardUid) {
+        $this->creditCardUid = $creditCardUid;
         return $this;
     }
 

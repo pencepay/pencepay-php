@@ -55,7 +55,7 @@ class Pencepay_Util_HttpClient {
     private static function _sendRequest($httpMethod, $url, $requestParams = array()) {
 
         $curl = curl_init();
-		curl_setopt($curl, CURLOPT_TIMEOUT, 60);
+		curl_setopt($curl, CURLOPT_TIMEOUT, 120);
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $httpMethod);
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_ENCODING, 'gzip');
@@ -87,6 +87,9 @@ class Pencepay_Util_HttpClient {
                 case 402:
                     $error = Pencepay_Util_Json::fromJson($responseBody);
                     throw new Pencepay_Exception_Processing($error->message, $error->code, $error->parameter);
+                case 403:
+                    $error = Pencepay_Util_Json::fromJson($responseBody);
+                    throw new Pencepay_Exception_Authorization($error->message, $error->code);
                 case 404:
                     $error = Pencepay_Util_Json::fromJson($responseBody);
                     throw new Pencepay_Exception_ItemNotFound($error->message, $error->code);

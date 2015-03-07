@@ -49,7 +49,7 @@ class Pencepay_Address extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($customerUid, $search) {
-        return Pencepay_Util_HttpClient::getWithParams("/customer/$customerUid/address_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/customer/$customerUid/addresses", $search);
     }
 
     /**

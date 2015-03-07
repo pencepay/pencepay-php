@@ -44,7 +44,7 @@ class Pencepay_Paycode extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($search) {
-        return Pencepay_Util_HttpClient::getWithParams("/paycode_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/paycodes", $search);
     }
 
     /**

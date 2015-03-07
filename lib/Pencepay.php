@@ -7,6 +7,7 @@ require_once('Pencepay/Util/Json.php');
 require_once('Pencepay/Exception.php');
 require_once('Pencepay/Exception/ApiAuthentication.php');
 require_once('Pencepay/Exception/ApiConnection.php');
+require_once('Pencepay/Exception/Authorization.php');
 require_once('Pencepay/Exception/InvalidRequest.php');
 require_once('Pencepay/Exception/ItemNotFound.php');
 require_once('Pencepay/Exception/Processing.php');

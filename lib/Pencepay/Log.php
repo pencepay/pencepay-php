@@ -26,7 +26,7 @@ class Pencepay_Log extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($search) {
-        return Pencepay_Util_HttpClient::getWithParams("/log_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/logs", $search);
     }
 
 }

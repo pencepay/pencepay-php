@@ -46,7 +46,7 @@ class Pencepay_User extends Pencepay_Object {
      * @return Pencepay_Collection
      */
     public static function search($search) {
-        return Pencepay_Util_HttpClient::getWithParams("/user_search", $search);
+        return Pencepay_Util_HttpClient::getWithParams("/users", $search);
     }
 
     /**
