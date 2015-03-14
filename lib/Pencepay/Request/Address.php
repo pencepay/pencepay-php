@@ -48,12 +48,6 @@ class Pencepay_Request_Address extends Pencepay_Request {
     }
 
     /** @return self */
-    public function email($email) {
-        $this->email = $email;
-        return $this;
-    }
-
-    /** @return self */
     public function postalCode($postalCode) {
         $this->postalCode = $postalCode;
         return $this;
