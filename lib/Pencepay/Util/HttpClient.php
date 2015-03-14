@@ -33,7 +33,7 @@ class Pencepay_Util_HttpClient {
     private static function encodeParameters(array $params, $prefix = null) {
         $r = array();
         foreach ($params as $k => $v) {
-            if (is_null($v)) {
+            if (is_null($v) || (is_array($v) && count($v) === 0)) {
                 continue;
             }
 
@@ -73,7 +73,9 @@ class Pencepay_Util_HttpClient {
         }
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		$responseBody = curl_exec($curl);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Expect:')); // Not supported by gateway
+
+        $responseBody = curl_exec($curl);
 		$httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
 
