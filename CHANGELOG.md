@@ -1,3 +1,7 @@
+## 1.0.4
+
+* bugfix for large POST requests bug
+
 ## 1.0.3
 
 * explicit authorization Exception added

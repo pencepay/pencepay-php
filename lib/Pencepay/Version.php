@@ -7,8 +7,8 @@ final class Pencepay_Version {
 
 	const MAJOR = 1;
 	const MINOR = 0;
-	const PATCH = 1;
-	
+	const PATCH = 4;
+
 	protected function __construct() {
 	}
 
