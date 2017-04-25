@@ -20,6 +20,7 @@
  * @property-read array $tags
  * @property-read string $cancelUrl
  * @property-read string $redirectUrl
+ * @property-read Pencepay_Store $store
  * @property-read Pencepay_Customer $customer
  * @property-read Pencepay_CreditCard $creditCard
  * @property-read Pencepay_Object $paymentInstructions

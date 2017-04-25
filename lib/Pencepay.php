@@ -61,6 +61,7 @@ require_once('Pencepay/CreditCard.php');
 require_once('Pencepay/Transaction.php');
 require_once('Pencepay/Paycode.php');
 require_once('Pencepay/Tag.php');
+require_once('Pencepay/Store.php');
 require_once('Pencepay/BankAccount.php');
 require_once('Pencepay/Merchant.php');
 require_once('Pencepay/Callback.php');
@@ -70,8 +71,8 @@ require_once('Pencepay/User.php');
 require_once('Pencepay/Role.php');
 
 
-if (version_compare(PHP_VERSION, '5.2.1', '<')) {
-	throw new Pencepay_Exception('PHP version >= 5.2.1 required');
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	throw new Pencepay_Exception('PHP version >= 5.4 required');
 }
 
 function validateDependencies() {

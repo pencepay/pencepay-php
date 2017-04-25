@@ -10,6 +10,7 @@ class Pencepay_Request_Transaction extends Pencepay_Request {
     protected $currencyCode;
     protected $orderId;
     protected $description;
+    protected $storeUid;
     protected $creditCardUid;
     protected $customerUid;
     protected $customer;
@@ -71,6 +72,12 @@ class Pencepay_Request_Transaction extends Pencepay_Request {
     /** @return self */
     public function description($description) {
         $this->description = $description;
+        return $this;
+    }
+
+      /** @return self */
+    public function storeUid($storeUid) {
+        $this->storeUid = $storeUid;
         return $this;
     }
 
@@ -150,6 +157,7 @@ class Pencepay_Request_Transaction extends Pencepay_Request {
             "currencyCode",
             "orderId",
             "description",
+            "storeUid",
             "creditCardUid",
             "customerUid",
             "customer",
