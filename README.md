@@ -4,7 +4,7 @@ This is a server-side library for Pencepay gateway. You can [signup](https://pen
 
 ## Dependencies
 
-PHP version >= 5.2.1 is required.
+PHP version >= 5.4 is required.
 
 The following PHP extensions are required:
 
