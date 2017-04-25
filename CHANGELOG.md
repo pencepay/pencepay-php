@@ -1,3 +1,13 @@
+## 1.0.6
+
+* (maintenance) Github version tag fix
+
+## 1.0.5
+
+* Transaction support for Stores in request and response objects
+* Store object introduced
+
+
 ## 1.0.4
 
 * bugfix for large POST requests bug
