@@ -10,7 +10,7 @@ final class Pencepay_Util_Json {
         return null;
 	}
 
-    private static function _createPencepayObject(array $data) {
+    private static function _createPencepayObject($data) {
         $types = [
             'error'        => 'Pencepay_Error',
             'list'         => 'Pencepay_Collection',
